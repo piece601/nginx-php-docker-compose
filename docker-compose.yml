@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+    nginx-php:
+        image: nginx-php
+        build:
+            context: ./
+        container_name: nginx-php
+        hostname: nginx-php
+        volumes:
+            - .:/var/www/
+        ports:
+            - 80:80
+            - 443:443
