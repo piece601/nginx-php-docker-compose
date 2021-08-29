@@ -8,7 +8,11 @@ services:
         container_name: nginx-php
         hostname: nginx-php
         volumes:
+            # 設定時區與本機時區相同
+            - /etc/localtime:/etc/localtime:ro
             - ./www/:/var/www/
+            - ./log/nginx/:/var/log/nginx/
+            - ./log/php-fpm/:/var/log/php-fpm/
         ports:
             - 80:80
             - 443:443

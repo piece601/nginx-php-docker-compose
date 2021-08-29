@@ -42,6 +42,9 @@ RUN sed -i 's/listen = 127.0.0.1:9000/listen = \/var\/run\/php73-fpm.sock/g'  /e
     sed -i 's/;listen.owner = nobody/listen.owner = nginx/g'  /etc/opt/remi/php73/php-fpm.d/www.conf && \
     sed -i 's/;listen.group = nobody/listen.group = nginx/g'  /etc/opt/remi/php73/php-fpm.d/www.conf
 
+# 把 log 軟連結出來到 /var/log/php-fpm
+RUN ln -s /var/opt/remi/php73/log/php-fpm /var/log/php-fpm
+
 # install nginx
 RUN yum install -y nginx
 COPY nginx.conf /etc/nginx/nginx.conf
