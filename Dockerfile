@@ -39,8 +39,8 @@ RUN . /opt/remi/php73/enable && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
 
 RUN sed -i 's/listen = 127.0.0.1:9000/listen = \/var\/run\/php73-fpm.sock/g'  /etc/opt/remi/php73/php-fpm.d/www.conf && \
-    sed -i 's/;listen.owner = nobody/listen.owner = apache/g'  /etc/opt/remi/php73/php-fpm.d/www.conf && \
-    sed -i 's/;listen.group = nobody/listen.group = apache/g'  /etc/opt/remi/php73/php-fpm.d/www.conf
+    sed -i 's/;listen.owner = nobody/listen.owner = nginx/g'  /etc/opt/remi/php73/php-fpm.d/www.conf && \
+    sed -i 's/;listen.group = nobody/listen.group = nginx/g'  /etc/opt/remi/php73/php-fpm.d/www.conf
 
 # install nginx
 RUN yum install -y nginx
