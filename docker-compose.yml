@@ -2,7 +2,6 @@ version: '3'
 
 services:
     nginx-php:
-        image: nginx-php
         build:
             context: ./
         container_name: nginx-php
@@ -10,9 +9,14 @@ services:
         volumes:
             # 設定時區與本機時區相同
             - /etc/localtime:/etc/localtime:ro
+            # 工作目錄
             - ./www/:/var/www/
+            # nginx log
             - ./log/nginx/:/var/log/nginx/
+            # php log
             - ./log/php-fpm/:/var/log/php-fpm/
         ports:
+            # 外部 80 port 轉到 container 80 port
             - 80:80
+            # 外部 443 port 轉到 container 443 port
             - 443:443
