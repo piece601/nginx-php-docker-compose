@@ -32,6 +32,7 @@ RUN yum install -y  php73 \
                     php73-xhprof.noarch \
                     php73-php-pecl-redis \
                     php-mongo \
+                    php73-php-pecl-swoole4 \
         ; exit 0;
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
